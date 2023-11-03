@@ -45,10 +45,36 @@ public class ValidPalindrome125 {
         }
         return true;
     }
+    public static boolean isPalindrome3(String s) {
+        if(s.isEmpty()) return true;
+        int i = 0, j = s.length() - 1;
+        while(i < j) {
+            char left = s.charAt(i);
+            char right = s.charAt(j);
+            if(!Character.isLetterOrDigit(left)){
+                i++;
+                continue;
+            }
+            if(!Character.isLetterOrDigit(right)) {
+                j--;
+                continue;
+            }
+            if(left >= 'A' && left <= 'Z') left = (char)(left - 'A' + 'a');
+            if(right >= 'A' && right <= 'Z') right = (char)(right - 'A' + 'a');
+            System.out.println("left: " + left + "right:" + right);
+            if(left != right) {return false;
+            }else{
+                i++;
+                j--;
+            }
+
+        }
+        return true;
+    }
 
     public static void main(String[] args) {
         //System.out.println('z' - 'A');
         String s = "A man, a plan, ,,,a canal: Panama";
-        System.out.println(isPalindrome2(s));
+        System.out.println(isPalindrome3(s));
     }
 }
